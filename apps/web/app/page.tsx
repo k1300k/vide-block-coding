@@ -33,7 +33,7 @@ export default function Home() {
               🚀 Intro
             </h3>
             <p className="text-gray-700">
-              로그인 시스템, 랜딩페이지, UI 컴포넌트 자동 재활용
+              기존 자산 재활용으로 프로젝트 초기화 자동화
             </p>
           </div>
 
@@ -42,7 +42,7 @@ export default function Home() {
               ✏️ Contents
             </h3>
             <p className="text-gray-700">
-              프롬프트 개발, AI 모델 비교, 지식 베이스 연동
+              프롬프트 개발, AI 모델 비교, 고급 편집 환경
             </p>
           </div>
 
@@ -51,7 +51,7 @@ export default function Home() {
               🔧 Deploy
             </h3>
             <p className="text-gray-700">
-              GitHub Actions, 데이터베이스, 클라우드 자동 배포
+              GitHub, 데이터베이스, 클라우드 배포 자동화
             </p>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function Home() {
 
         <div className="mt-16 text-center text-gray-500">
           <p className="text-sm">
-            프로젝트 설정 시간 60% 단축 | 자산 재사용률 70% | AI 크레딧 30% 절감
+            ⚡ 설정 시간 60% 단축 | ♻️ 자산 재사용률 70% | 💰 AI 크레딧 30% 절감
           </p>
         </div>
       </div>

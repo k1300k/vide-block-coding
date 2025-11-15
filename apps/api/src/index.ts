@@ -5,7 +5,7 @@ import { PrismaClient } from '@ai-vibe/db';
 import { z } from 'zod';
 import 'dotenv/config';
 
-const app = Fastify({ logger: true });
+export const app = Fastify({ logger: true });
 const prisma = new PrismaClient();
 
 // Plugin 등록
@@ -469,7 +469,7 @@ app.get('/components', async (req, res) => {
 });
 
 // 서버 시작
-const start = async () => {
+export const start = async () => {
   try {
     const port = process.env.PORT ? parseInt(process.env.PORT) : 4000;
     const host = process.env.HOST || '0.0.0.0';
@@ -486,5 +486,9 @@ const start = async () => {
   }
 };
 
-start();
+// 기본 동작: 직접 실행할 때(로컬 개발 등)만 HTTP 서버를 시작합니다.
+// Vercel 같은 환경에서 이 모듈을 import하려면 `START_HTTP=false`로 설정하세요.
+if (process.env.START_HTTP !== 'false') {
+  start();
+}
 

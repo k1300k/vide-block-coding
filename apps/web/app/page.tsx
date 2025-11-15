@@ -3,9 +3,11 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { InfoModal } from '@/app/components/InfoModal'
+import { ManualModal } from '@/app/components/ManualModal'
 
 export default function Home() {
   const [isInfoOpen, setIsInfoOpen] = useState(false)
+  const [isManualOpen, setIsManualOpen] = useState(false)
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
@@ -20,6 +22,13 @@ export default function Home() {
             title="개발 이력 및 서비스 정보"
           >
             ℹ️ 정보
+          </button>
+          <button
+            onClick={() => setIsManualOpen(true)}
+            className="ml-3 px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 font-medium transition-colors whitespace-nowrap"
+            title="서비스 설명 매뉴얼"
+          >
+            📘 매뉴얼
           </button>
         </div>
         
@@ -79,6 +88,7 @@ export default function Home() {
       </div>
 
       <InfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
+      <ManualModal isOpen={isManualOpen} onClose={() => setIsManualOpen(false)} />
     </main>
   )
 }

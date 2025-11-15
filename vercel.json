@@ -1,12 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "pnpm -w -F @ai-vibe/web build",
-  "devCommand": "pnpm -C apps/web dev",
-  "installCommand": "corepack enable && corepack prepare pnpm@9.15.0 --activate && pnpm install --network-timeout 600000",
+  "buildCommand": "cd apps/web && pnpm build",
   "framework": "nextjs",
   "outputDirectory": "apps/web/.next",
   "env": {
     "NODE_ENV": "production",
+    "ENABLE_EXPERIMENTAL_COREPACK": "1",
     "npm_config_fetch_retries": "10",
     "npm_config_fetch_retry_mintimeout": "30000",
     "npm_config_fetch_retry_maxtimeout": "180000",

@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@9.0.0",
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": ["*"]
+    }
+  },
   "workspaces": [
     "apps/*",
     "packages/*"

@@ -1,8 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd apps/web && pnpm build",
-  "framework": "nextjs",
+  "installCommand": "pnpm install --network-timeout 600000",
+  "buildCommand": "pnpm -F @ai-vibe/web build",
   "outputDirectory": "apps/web/.next",
+  "framework": "nextjs",
   "env": {
     "NODE_ENV": "production",
     "ENABLE_EXPERIMENTAL_COREPACK": "1",

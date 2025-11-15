@@ -38,7 +38,21 @@ export function InfoModal({ isOpen, onClose }: InfoModalProps) {
               {/* Service Overview */}
               <div className="mb-8">
                 <h2 className="text-2xl font-bold mb-4">서비스 소개</h2>
+                <p className="text-xl font-semibold text-indigo-600 mb-2">{serviceInfo.subtitle}</p>
                 <p className="text-gray-700 mb-6">{serviceInfo.description}</p>
+
+                {/* 3-Stage Workflow */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  {serviceInfo.workflow.map((step, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-gradient-to-br from-indigo-50 to-blue-50 p-5 rounded-lg border-2 border-indigo-300"
+                    >
+                      <h3 className="text-xl font-bold mb-2 text-indigo-700">{step.stage}</h3>
+                      <p className="text-gray-700 text-sm">{step.description}</p>
+                    </div>
+                  ))}
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   {serviceInfo.goals.map((goal, idx) => (

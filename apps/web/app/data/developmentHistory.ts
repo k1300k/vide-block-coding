@@ -116,8 +116,14 @@ export const developmentHistory: Version[] = [
 ];
 
 export const serviceInfo = {
-  title: 'AI Vibe Coding Workflow Automation Platform',
-  description: 'AI 개발자를 위한 3단계 워크플로우 자동화 플랫폼 - 프로젝트 설정 시간 60% 단축, 자산 재사용률 70% 달성',
+  title: 'AI Vibe Workflow',
+  subtitle: 'AI 개발자를 위한 3단계 워크플로우 자동화 플랫폼',
+  description: '반복적인 설정 작업에서 벗어나 핵심 프롬프트 개발에 집중하세요. Intro(초기화) → Contents(개발) → Deploy(배포)의 3단계로 AI 앱 개발을 자동화합니다.',
+  workflow: [
+    { stage: '🚀 Intro', description: '기존 자산 재활용으로 프로젝트 초기화 자동화' },
+    { stage: '✏️ Contents', description: '프롬프트 개발, AI 모델 비교, 고급 편집 환경' },
+    { stage: '🔧 Deploy', description: 'GitHub, 데이터베이스, 클라우드 배포 자동화' },
+  ],
   goals: [
     { icon: '⚡', text: '프로젝트 설정 시간 60% 단축 (30분 → 12분)' },
     { icon: '♻️', text: '기존 자산 재사용률 70% 달성' },

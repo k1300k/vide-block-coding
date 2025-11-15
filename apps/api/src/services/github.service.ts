@@ -113,11 +113,12 @@ export class GitHubService {
             (file.name.endsWith('.tsx') || file.name.endsWith('.jsx'))
           )
           .map(file => ({
-            name: file.name.replace(/\.(tsx|jsx)$/, ''),
-            path: file.path,
-            type: 'ui-component',
-            downloadUrl: 'download_url' in file ? file.download_url : undefined
-          }));
+              name: file.name.replace(/\.(tsx|jsx)$/, ''),
+              path: file.path,
+              type: 'ui-component',
+              // GitHub API's `download_url` can be null; normalize null -> undefined to satisfy ComponentFile type
+              downloadUrl: (file as any).download_url ?? undefined
+            }));
 
         return componentFiles;
       }

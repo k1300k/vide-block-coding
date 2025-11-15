@@ -1,11 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "corepack enable && corepack prepare pnpm@9.15.0 --activate && pnpm -w -F @ai-vibe/web build",
+  "buildCommand": "corepack enable && corepack prepare pnpm@9.15.0 --activate && pnpm install --frozen-lockfile && pnpm -w -F @ai-vibe/web build",
   "devCommand": "corepack enable && corepack prepare pnpm@9.15.0 --activate && pnpm -C apps/web dev",
-  "installCommand": "corepack enable && corepack prepare pnpm@9.15.0 --activate && pnpm install",
+  "installCommand": "corepack enable && corepack prepare pnpm@9.15.0 --activate && pnpm install --frozen-lockfile --network-timeout 60000",
   "framework": "nextjs",
   "outputDirectory": "apps/web/.next",
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "npm_config_fetch_retries": "5",
+    "npm_config_fetch_retry_mintimeout": "20000",
+    "npm_config_fetch_retry_maxtimeout": "120000"
   }
 }

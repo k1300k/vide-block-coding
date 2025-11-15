@@ -13,7 +13,7 @@ interface ComponentFile {
   path: string;
   type: string;
   url?: string;
-  downloadUrl?: string;
+  downloadUrl?: string | null;
 }
 
 interface Configuration {

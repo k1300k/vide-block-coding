@@ -1,18 +1,25 @@
 'use client';
 
 import React, { useCallback, useState } from 'react';
-import ReactFlow, { 
+import dynamic from 'next/dynamic';
+import 'reactflow/dist/style.css';
+
+const ReactFlow = dynamic(
+  () => import('reactflow').then(mod => mod.default),
+  { ssr: false }
+);
+
+import { 
   Background, 
   Controls, 
   MiniMap,
   addEdge, 
   useNodesState, 
   useEdgesState,
-  Node,
-  Edge,
-  Connection
+  type Node,
+  type Edge,
+  type Connection
 } from 'reactflow';
-import 'reactflow/dist/style.css';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 

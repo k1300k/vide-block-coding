@@ -1,0 +1,1307 @@
+---
+alwaysApply: true
+
+# AI 바이브 코딩 워크플로우 자동화 플랫폼 PRD
+
+## **문서 정보**
+- **제품명:** AI Vibe Coding Workflow Automation Platform
+- **버전:** 1.0
+- **작성일:** 2024년 11월
+- **대상:** 15년차 서비스 기획자를 위한 프로세스 기반 개발 자동화 솔루션
+
+## **프로젝트 개요**
+
+**비전 선언문:**
+AI 바이브 코딩 사용자가 반복적인 설정 작업에서 벗어나 핵심 프롬프트 개발과 창의적 아이디어 구현에 전념할 수 있도록 지원하는 지능형 워크플로우 자동화 플랫폼을 구축합니다.
+
+**핵심 문제 정의:**
+현재 AI 바이브 코딩 환경에서는 새로운 프로젝트마다 로그인 시스템, 랜딩페이지, 데이터베이스 연결, AI API 설정, 배포 환경 구성 등 동일한 작업을 반복해야 합니다. 이는 상당한 시간과 크레딧 소모를 야기하며, 개발자의 창의적 에너지를 소진시키는 주요 요인입니다. n8n과 Google Opal 같은 워크플로우 자동화 도구들이 보여주는 프로세스 시각화와 자동화 트렌드를 AI 개발 환경에 적용하여 이러한 비효율성을 해결해야 합니다.
+
+**주요 목표:**
+- AI 프로젝트 초기 설정 시간 60% 이상 단축
+- 기존 개발 자산의 재사용률 70% 이상 달성
+- AI 크레딧 사용량 30% 절감을 통한 비용 효율성 향상
+- 메인 컨텐츠(프롬프트) 개발에 집중할 수 있는 환경 제공
+
+## **솔루션 아키텍처**
+
+**3단계 프로세스 기반 워크플로우:**
+본 플랫폼은 "시작(Intro) → 메인 컨텐츠(Contents) → 배포 및 환경설정(Etc)"의 선형적 프로세스를 기반으로 설계됩니다. 각 단계는 독립적으로 구성 가능하면서도 데이터 흐름과 의존성을 통해 유기적으로 연결됩니다. 시각적 워크플로우 캔버스에서 드래그 앤 드롭 방식으로 각 단계의 컴포넌트를 배치하고 연결할 수 있으며, 실시간으로 진행 상황과 완료 조건을 확인할 수 있습니다.
+
+## **핵심 기능 요구사항**
+
+### **시작(Intro) 단계 - 기존 자산 재활용 중심**
+
+**로그인 시스템 자동화:**
+기존 GitHub 저장소에서 인증 관련 코드를 자동으로 감지하고 가져오는 기능을 제공합니다. OAuth 2.0(Google, GitHub, Discord), JWT 기반 인증, 소셜 로그인 등 다양한 인증 방식을 컴포넌트화하여 제공하며, 한 번 설정된 인증 정보는 프로필로 저장되어 향후 프로젝트에서 원클릭으로 재사용할 수 있습니다. 인증 플로우의 보안 검증과 테스트도 자동으로 수행하여 구현의 안정성을 보장합니다.
+
+**랜딩페이지 및 홈페이지 통합:**
+사용자의 GitHub Pages, Vercel, Netlify 등에 배포된 기존 랜딩페이지를 자동으로 스캔하고 가져올 수 있는 기능을 구현합니다. HTML, CSS, JavaScript 파일을 분석하여 재사용 가능한 컴포넌트를 추출하고, 브랜딩 요소(로고, 색상, 폰트)를 자동으로 감지하여 일관된 디자인을 유지합니다. 반응형 디자인과 접근성 표준도 자동으로 검증하여 품질을 보장합니다.
+
+**공통 UI/UX 컴포넌트 라이브러리:**
+네비게이션 메뉴, 푸터, 사이드바, 모달 창 등 자주 사용되는 UI 컴포넌트들을 중앙 집중식으로 관리합니다. 각 컴포넌트는 버전 관리되며, 사용자 정의 스타일링과 기능 확장이 가능합니다. 컴포넌트 간 의존성과 호환성도 자동으로 관리하여 안정적인 재사용을 지원합니다.
+
+### **메인 컨텐츠(Contents) 단계 - 핵심 개발 집중**
+
+**고급 프롬프트 개발 환경:**
+구문 강조, 자동 완성, 실시간 문법 검사 기능을 갖춘 전용 프롬프트 에디터를 제공합니다. 프롬프트 템플릿 라이브러리를 통해 검증된 패턴을 재사용할 수 있으며, 변수 바인딩과 조건부 로직을 통해 동적 프롬프트 생성이 가능합니다. 프롬프트 버전 관리와 A/B 테스트 기능도 내장하여 지속적인 개선을 지원합니다.
+
+**멀티 모델 비교 및 평가 시스템:**
+OpenAI GPT-4, Anthropic Claude, Google Gemini 등 다양한 AI 모델을 동시에 테스트하고 비교할 수 있는 기능을 제공합니다. 응답 품질, 처리 속도, 비용 효율성을 종합적으로 평가하여 최적의 모델을 추천합니다. 사용자 정의 평가 기준과 자동화된 품질 게이트를 통해 일관된 품질 관리가 가능합니다.
+
+**지식 베이스 연동:**
+문서 업로드, 웹 스크래핑, API 연동을 통해 외부 지식을 프롬프트에 통합할 수 있습니다. 벡터 데이터베이스(Supabase pgvector, Pinecone 등)를 활용한 의미적 검색과 컨텍스트 주입 기능을 제공하여 프롬프트의 정확성과 관련성을 향상시킵니다.
+
+**실시간 테스트 및 디버깅:**
+프롬프트 실행 결과를 실시간으로 확인하고, 입력/출력 데이터의 변화를 추적할 수 있는 디버깅 도구를 제공합니다. 오류 발생 시 상세한 로그와 해결 방안을 제시하여 빠른 문제 해결을 지원합니다.
+
+### **배포 및 환경설정(Etc) 단계 - 완전 자동화**
+
+**GitHub 통합 자동화:**
+현재 워크플로우에서 생성된 모든 코드와 설정 파일을 지정된 GitHub 저장소에 자동으로 커밋하고 푸시합니다. GitHub Actions를 활용한 CI/CD 파이프라인도 자동으로 생성하여 코드 품질 검사, 테스트 실행, 자동 배포까지 원스톱으로 처리합니다. 브랜치 전략, 코드 리뷰 규칙, 보안 스캔 설정도 템플릿화하여 제공합니다.
+
+**데이터베이스 연결 및 마이그레이션:**
+Supabase, PostgreSQL, MongoDB, Firebase 등 다양한 데이터베이스에 대한 연결 설정과 초기 스키마 생성을 자동화합니다. 데이터베이스 마이그레이션 스크립트 생성, 백업 설정, 성능 모니터링 구성까지 포함하여 운영 환경에서의 안정성을 보장합니다. 데이터베이스 연결 상태와 성능 지표를 실시간으로 모니터링하는 대시보드도 제공합니다.
+
+**AI 서비스 통합 관리:**
+다양한 AI 제공업체의 API 키, 엔드포인트, 사용량 제한 설정을 중앙에서 관리합니다. API 키의 보안 저장, 자동 로테이션, 사용량 모니터링과 알림 기능을 제공하여 비용 관리와 보안을 동시에 해결합니다. 모델별 성능 지표와 비용 분석 리포트도 자동으로 생성합니다.
+
+**클라우드 서비스 연동:**
+Google Cloud Platform, AWS, Azure 등의 클라우드 서비스 설정을 자동화합니다. 서비스 계정 생성, IAM 권한 설정, 리소스 프로비저닝을 템플릿 기반으로 처리하며, 비용 최적화와 보안 모범 사례를 자동으로 적용합니다.
+
+## **기술적 구현 방안**
+
+**백엔드 아키텍처:**
+Node.js 기반의 마이크로서비스 아키텍처를 채택하여 각 기능 모듈을 독립적으로 개발하고 배포할 수 있도록 설계합니다. 워크플로우 실행 엔진은 Apache Airflow를 기반으로 구축하여 복잡한 의존성 관리와 조건부 실행을 지원합니다. Redis를 활용한 캐싱 레이어와 메시지 큐를 통해 성능 최적화와 비동기 처리를 구현합니다.
+
+**프론트엔드 구현:**
+React 18과 TypeScript를 기반으로 한 현대적인 SPA를 구축합니다. 드래그 앤 드롭 워크플로우 편집기는 React Flow 라이브러리를 활용하여 구현하며, 실시간 협업을 위한 WebSocket 연결과 상태 동기화 시스템을 구축합니다. PWA 기술을 적용하여 오프라인 환경에서도 기본 기능을 사용할 수 있도록 합니다.
+
+**데이터 저장 및 관리:**
+PostgreSQL을 주 데이터베이스로 사용하여 워크플로우 메타데이터, 사용자 정보, 실행 이력을 저장합니다. MongoDB는 유연한 스키마가 필요한 컴포넌트 정의와 설정 데이터 저장에 활용합니다. 벡터 데이터베이스로는 Supabase의 pgvector 확장을 사용하여 프롬프트와 컴포넌트의 의미적 검색을 지원합니다.
+
+## **보안 및 성능 최적화**
+
+**보안 구현:**
+모든 민감 정보는 AWS Secrets Manager 또는 HashiCorp Vault를 통해 암호화하여 저장합니다. JWT 기반 인증과 역할 기반 접근 제어(RBAC)를 구현하여 세밀한 권한 관리를 제공합니다. API 통신은 TLS 1.3을 사용하며, 정기적인 보안 스캔과 침투 테스트를 통해 보안 수준을 유지합니다.
+
+**성능 최적화:**
+CDN을 활용한 정적 자원 배포, 데이터베이스 쿼리 최적화, 지연 로딩 기법을 적용하여 응답 속도를 최적화합니다. AI 서비스 호출의 대기 시간을 최소화하기 위해 비동기 처리와 결과 캐싱을 구현하며, 부하 분산과 오토 스케일링을 통해 트래픽 증가에 대응합니다.
+
+## **데이터 모델 설계**
+
+**핵심 엔티티:**
+
+```sql
+-- 조직 및 사용자 관리
+Organization (id, name, plan, created_at)
+User (id, email, role, org_id, preferences)
+
+-- 프로젝트 및 워크플로우
+Project (id, org_id, name, description, blueprint_id, status)
+Workflow (id, project_id, definition, version, created_at)
+WorkflowExecution (id, workflow_id, status, logs, metrics)
+
+-- 재사용 가능한 자산
+Profile (id, org_id, type, configuration, version)
+Component (id, name, category, definition, metadata)
+Template (id, name, type, content, tags)
+
+-- AI 및 외부 서비스 연동
+AIProvider (id, name, api_endpoint, model_catalog)
+Credential (id, org_id, provider, encrypted_key, scopes)
+Integration (id, service_type, configuration, status)
+```
+
+## **외부 서비스 연동 사양**
+
+**GitHub 통합:**
+GitHub OAuth App을 통한 인증과 저장소 접근 권한을 관리합니다. GitHub API v4 (GraphQL)을 활용하여 저장소 정보 조회, 파일 읽기/쓰기, Actions 워크플로우 생성을 자동화합니다. Webhook을 통해 코드 변경사항과 배포 상태를 실시간으로 동기화합니다.
+
+**AI 서비스 연동:**
+OpenAI, Anthropic, Google AI의 REST API를 통합하여 일관된 인터페이스를 제공합니다. API 키 관리, 요청 제한, 비용 추적 기능을 구현하며, 각 제공업체의 특성에 맞는 최적화된 요청 처리를 지원합니다.
+
+**클라우드 서비스 통합:**
+Terraform을 활용한 Infrastructure as Code 접근 방식으로 클라우드 리소스를 관리합니다. 각 클라우드 제공업체의 SDK를 통해 서비스 프로비저닝, 모니터링, 비용 관리를 자동화합니다.
+
+## **성공 측정 지표**
+
+**정량적 지표:**
+- 프로젝트 설정 시간: 기존 대비 60% 이상 단축 (목표: 평균 30분 → 12분)
+- 컴포넌트 재사용률: 신규 프로젝트의 70% 이상에서 기존 컴포넌트 활용
+- AI 크레딧 절약률: 동일 기능 구현 시 30% 이상 크레딧 절약
+- 배포 성공률: 워크플로우 기반 배포의 95% 이상 성공률 달성
+
+**정성적 지표:**
+- 사용자 만족도: NPS 점수 70 이상 달성
+- 개발자 생산성: 핵심 개발 시간 비율 60% 이상 증가
+- 플랫폼 채택률: 기존 사용자의 80% 이상이 워크플로우 기능 활용
+
+## **단계별 개발 로드맵**
+
+**MVP 단계 (8주):**
+기본 워크플로우 빌더, 3단계 프로세스 구현, GitHub/Supabase 기본 연동, 프로필 저장/재사용 기능, 기본적인 프롬프트 개발 환경을 구축합니다.
+
+**Phase 1 (추가 6주):**
+AI 모델 비교 기능, 고급 프롬프트 에디터, 컴포넌트 라이브러리 확장, 실시간 모니터링 대시보드, 보안 강화 기능을 추가합니다.
+
+**Phase 2 (추가 8주):**
+마켓플레이스 구축, 팀 협업 기능, 고급 분석 및 리포팅, 더 많은 외부 서비스 연동, 엔터프라이즈 기능을 개발합니다.
+
+## **위험 관리 및 대응 전략**
+
+**기술적 위험:**
+외부 서비스의 API 변경이나 중단에 대비하여 다중 제공업체 지원과 폴백 메커니즘을 구현합니다. 서킷 브레이커 패턴과 재시도 로직을 통해 일시적 장애에 대응하며, 캐시된 설정으로 읽기 전용 모드 제공을 통해 서비스 연속성을 보장합니다.
+
+**사업적 위험:**
+사용자 채택률 저조에 대비하여 단계적 출시와 사용자 피드백 기반 개선을 진행합니다. 경쟁 서비스 출현에 대비하여 차별화된 기능과 사용자 경험에 집중하며, 오픈소스 생태계와의 연계를 통해 지속 가능한 성장 기반을 구축합니다.
+
+**운영적 위험:**
+복잡도 증가로 인한 사용성 저하를 방지하기 위해 직관적인 UI/UX 설계와 단계별 가이드를 제공합니다. 고급 기능은 접이식 메뉴로 숨기고, 초보자를 위한 템플릿과 마법사 모드를 제공하여 진입 장벽을 낮춥니다.
+
+이 PRD는 AI 바이브 코딩의 워크플로우 자동화를 통해 개발자의 생산성을 혁신적으로 향상시키고, 창의적 개발에 집중할 수 있는 환경을 제공하는 것을 목표로 합니다. 단계적 구현과 지속적인 사용자 피드백을 통해 실용적이고 가치 있는 플랫폼으로 발전시켜 나가겠습니다.
+
+# AI 바이브 코딩 워크플로우 자동화 플랫폼 - Cursor 개발 가이드
+
+## **프로젝트 개요**
+
+**목표:** AI 개발자가 반복적인 설정 작업(로그인, 랜딩페이지, DB 연결, 배포)에서 벗어나 핵심 프롬프트 개발에 집중할 수 있도록 하는 3단계 워크플로우 자동화 플랫폼 구축
+
+**핵심 지표:**
+- 프로젝트 설정 시간 60% 단축 (30분 → 12분)
+- 기존 자산 재사용률 70% 달성
+- AI 크레딧 30% 절감
+
+## **즉시 시작 가능한 개발 환경**
+
+### **프로젝트 구조 생성**
+
+```bash
+mkdir ai-vibe-workflow && cd ai-vibe-workflow
+```
+
+**루트 package.json:**
+```json
+{
+  "name": "ai-vibe-workflow",
+  "private": true,
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "db:push": "pnpm -C packages/db db:push",
+    "db:studio": "pnpm -C packages/db db:studio",
+    "ci": "pnpm lint && pnpm typecheck && pnpm build"
+  }
+}
+```
+
+### **Cursor 최적화 설정**
+
+**.cursorrules:**
+```
+You are the project engineer inside Cursor.
+
+Objectives:
+- Implement 3-step workflow builder (Intro → Contents → Etc) with reusable profiles
+- Minimize AI tokens and external API calls; use mocks for development
+- Ship incremental, typed, tested code
+
+Tech Stack:
+- Backend: Fastify + Zod + Prisma + PostgreSQL
+- Frontend: Next.js 15 + React Flow + Zustand + TypeScript
+- Database: PostgreSQL with Supabase pgvector for semantic search
+- Deployment: Docker + GitHub Actions
+
+Priority Backlog (MVP):
+1. Profile CRUD (github, database, ai, cloud configurations)
+2. Visual workflow builder with drag-and-drop canvas
+3. GitHub repository scanning and component extraction
+4. Prompt editor with syntax highlighting and testing
+5. Integration testing endpoints
+6. Automated GitHub Actions generation
+
+Coding Standards:
+- TypeScript strict mode
+- Zod validation for all API inputs
+- Small, pure functions with early returns
+- Comprehensive error handling
+```
+
+### **환경 설정**
+
+**.env.example:**
+```env
+# Database
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/ai_vibe"
+SUPABASE_URL=""
+SUPABASE_SERVICE_ROLE_KEY=""
+
+# AI Services
+OPENAI_API_KEY=""
+ANTHROPIC_API_KEY=""
+GOOGLE_AI_API_KEY=""
+
+# GitHub Integration
+GITHUB_CLIENT_ID=""
+GITHUB_CLIENT_SECRET=""
+GITHUB_TOKEN=""
+
+# Authentication
+NEXTAUTH_SECRET="development-secret-key"
+NEXTAUTH_URL="http://localhost:3000"
+
+# Environment
+NODE_ENV="development"
+```
+
+## **데이터베이스 스키마**
+
+**packages/db/prisma/schema.prisma:**
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  plan      String   @default("free")
+  createdAt DateTime @default(now())
+  
+  users     User[]
+  projects  Project[]
+  profiles  Profile[]
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  role        String   @default("developer")
+  orgId       String
+  preferences Json?
+  
+  organization Organization @relation(fields: [orgId], references: [id])
+  profiles     Profile[]
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  orgId       String
+  name        String
+  description String?
+  status      String    @default("draft")
+  createdAt   DateTime  @default(now())
+  
+  organization Organization @relation(fields: [orgId], references: [id])
+  workflows    Workflow[]
+}
+
+model Workflow {
+  id          String    @id @default(cuid())
+  projectId   String
+  definition  Json      // React Flow JSON structure
+  version     Int       @default(1)
+  createdAt   DateTime  @default(now())
+  
+  project     Project   @relation(fields: [projectId], references: [id])
+  executions  WorkflowExecution[]
+}
+
+model WorkflowExecution {
+  id         String    @id @default(cuid())
+  workflowId String
+  status     String    @default("pending")
+  logs       Json?
+  metrics    Json?
+  startedAt  DateTime  @default(now())
+  completedAt DateTime?
+  
+  workflow   Workflow  @relation(fields: [workflowId], references: [id])
+}
+
+model Profile {
+  id            String   @id @default(cuid())
+  orgId         String
+  userId        String?
+  name          String
+  type          String   // github | database | ai | cloud | ui
+  configuration Json     // Encrypted sensitive data
+  version       Int      @default(1)
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  
+  organization  Organization @relation(fields: [orgId], references: [id])
+  user          User?        @relation(fields: [userId], references: [id])
+}
+
+model Component {
+  id         String   @id @default(cuid())
+  name       String
+  category   String   // intro | contents | deploy
+  definition Json
+  metadata   Json?
+  isPublic   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+model Integration {
+  id            String   @id @default(cuid())
+  serviceType   String   // github | supabase | openai | gcp
+  configuration Json
+  status        String   @default("active")
+  createdAt     DateTime @default(now())
+}
+```
+
+## **백엔드 API 구현**
+
+**apps/api/src/index.ts:**
+```typescript
+import Fastify from 'fastify';
+import cors from '@fastify/cors';
+import sensible from '@fastify/sensible';
+import { PrismaClient } from '@ai-vibe/db/node_modules/@prisma/client';
+import { z } from 'zod';
+import 'dotenv/config';
+
+const app = Fastify({ logger: true });
+const prisma = new PrismaClient();
+
+await app.register(cors, { origin: true });
+await app.register(sensible);
+
+// Health check
+app.get('/health', async () => ({ ok: true, timestamp: new Date().toISOString() }));
+
+// Authentication (simplified for MVP)
+app.post('/auth/login', async (req, res) => {
+  const body = z.object({ email: z.string().email() }).parse(req.body);
+  
+  let org = await prisma.organization.findFirst();
+  if (!org) {
+    org = await prisma.organization.create({ 
+      data: { name: 'Default Organization' }
+    });
+  }
+  
+  let user = await prisma.user.findUnique({ where: { email: body.email }});
+  if (!user) {
+    user = await prisma.user.create({ 
+      data: { email: body.email, orgId: org.id }
+    });
+  }
+  
+  return { token: body.email, user, organization: org };
+});
+
+// Profile Management
+app.get('/profiles', async (req) => {
+  const org = await prisma.organization.findFirstOrThrow();
+  const profiles = await prisma.profile.findMany({ 
+    where: { orgId: org.id },
+    orderBy: { createdAt: 'desc' }
+  });
+  return { data: profiles };
+});
+
+app.post('/profiles', async (req) => {
+  const org = await prisma.organization.findFirstOrThrow();
+  const body = z.object({
+    name: z.string().min(1),
+    type: z.enum(['github', 'database', 'ai', 'cloud', 'ui']),
+    configuration: z.record(z.any())
+  }).parse(req.body);
+  
+  const profile = await prisma.profile.create({ 
+    data: { 
+      orgId: org.id, 
+      name: body.name,
+      type: body.type,
+      configuration: body.configuration 
+    }
+  });
+  return { profile };
+});
+
+// Project Management
+app.post('/projects', async (req) => {
+  const org = await prisma.organization.findFirstOrThrow();
+  const body = z.object({ 
+    name: z.string().min(1), 
+    description: z.string().optional() 
+  }).parse(req.body);
+  
+  const project = await prisma.project.create({ 
+    data: { orgId: org.id, ...body }
+  });
+  return { project };
+});
+
+// Workflow Management
+app.post('/workflows', async (req) => {
+  const body = z.object({
+    projectId: z.string(),
+    definition: z.any() // React Flow structure
+  }).parse(req.body);
+  
+  const workflow = await prisma.workflow.create({ 
+    data: { 
+      projectId: body.projectId, 
+      definition: body.definition 
+    }
+  });
+  return { workflow };
+});
+
+app.post('/workflows/:id/execute', async (req) => {
+  const { id } = req.params as { id: string };
+  
+  const workflow = await prisma.workflow.findUniqueOrThrow({
+    where: { id },
+    include: { project: true }
+  });
+  
+  const execution = await prisma.workflowExecution.create({
+    data: {
+      workflowId: id,
+      status: 'running',
+      logs: { message: 'Workflow execution started' }
+    }
+  });
+  
+  // Mock execution logic
+  setTimeout(async () => {
+    await prisma.workflowExecution.update({
+      where: { id: execution.id },
+      data: {
+        status: 'completed',
+        completedAt: new Date(),
+        logs: { message: 'Workflow completed successfully' }
+      }
+    });
+  }, 2000);
+  
+  return { execution };
+});
+
+// AI Integration (Mock)
+app.post('/ai/run', async (req) => {
+  const body = z.object({ 
+    prompt: z.string().min(1),
+    model: z.string().default('gpt-4')
+  }).parse(req.body);
+  
+  // Mock response for development
+  const mockResponse = `Mock AI response for prompt: "${body.prompt}" using model: ${body.model}`;
+  
+  return { 
+    output: mockResponse,
+    model: body.model,
+    usage: { tokens: 150, cost: 0.003 }
+  };
+});
+
+// GitHub Integration (Mock)
+app.post('/integrations/github/scan', async (req) => {
+  const body = z.object({ 
+    repository: z.string(),
+    owner: z.string()
+  }).parse(req.body);
+  
+  // Mock repository scan results
+  return {
+    repository: `${body.owner}/${body.repository}`,
+    components: [
+      {
+        name: 'LoginComponent',
+        type: 'auth',
+        path: 'src/components/Login.tsx',
+        reusable: true
+      },
+      {
+        name: 'NavBar',
+        type: 'ui',
+        path: 'src/components/NavBar.tsx',
+        reusable: true
+      }
+    ],
+    configurations: [
+      {
+        type: 'environment',
+        file: '.env.example',
+        variables: ['DATABASE_URL', 'API_KEY']
+      }
+    ]
+  };
+});
+
+app.listen({ port: 4000, host: '0.0.0.0' });
+```
+
+## **프론트엔드 워크플로우 빌더**
+
+**apps/web/app/builder/page.tsx:**
+```typescript
+'use client';
+import React, { useCallback, useState } from 'react';
+import ReactFlow, { 
+  Background, 
+  Controls, 
+  MiniMap,
+  addEdge, 
+  useNodesState, 
+  useEdgesState,
+  Node,
+  Edge
+} from 'reactflow';
+import 'reactflow/dist/style.css';
+
+const initialNodes: Node[] = [
+  { 
+    id: 'intro', 
+    position: { x: 100, y: 100 }, 
+    data: { 
+      label: 'Intro Stage',
+      stage: 'intro',
+      components: []
+    }, 
+    type: 'default',
+    style: { background: '#e8f5e8', border: '2px solid #4caf50' }
+  },
+  { 
+    id: 'contents', 
+    position: { x: 400, y: 100 }, 
+    data: { 
+      label: 'Contents Stage',
+      stage: 'contents',
+      components: []
+    },
+    style: { background: '#e3f2fd', border: '2px solid #2196f3' }
+  },
+  { 
+    id: 'deploy', 
+    position: { x: 700, y: 100 }, 
+    data: { 
+      label: 'Deploy Stage',
+      stage: 'deploy',
+      components: []
+    }, 
+    type: 'output',
+    style: { background: '#fce4ec', border: '2px solid #e91e63' }
+  }
+];
+
+const initialEdges: Edge[] = [
+  { id: 'intro-contents', source: 'intro', target: 'contents' },
+  { id: 'contents-deploy', source: 'contents', target: 'deploy' }
+];
+
+export default function WorkflowBuilder() {
+  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [selectedProfile, setSelectedProfile] = useState<string>('');
+  const [profiles, setProfiles] = useState<any[]>([]);
+
+  const onConnect = useCallback(
+    (params: any) => setEdges((eds) => addEdge(params, eds)),
+    [setEdges]
+  );
+
+  const saveWorkflow = async () => {
+    try {
+      // Create project first
+      const projectRes = await fetch('http://localhost:4000/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          name: `Workflow-${Date.now()}`,
+          description: 'Generated from workflow builder'
+        })
+      });
+      const { project } = await projectRes.json();
+
+      // Save workflow
+      const workflowRes = await fetch('http://localhost:4000/workflows', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          projectId: project.id, 
+          definition: { nodes, edges }
+        })
+      });
+      const { workflow } = await workflowRes.json();
+
+      alert(`Workflow saved! Project: ${project.name}, Workflow ID: ${workflow.id}`);
+    } catch (error) {
+      alert('Failed to save workflow: ' + error);
+    }
+  };
+
+  const executeWorkflow = async () => {
+    // For demo, we'll execute the last saved workflow
+    try {
+      const response = await fetch('http://localhost:4000/workflows/demo/execute', {
+        method: 'POST'
+      });
+      const { execution } = await response.json();
+      alert(`Workflow execution started! Execution ID: ${execution.id}`);
+    } catch (error) {
+      alert('Failed to execute workflow: ' + error);
+    }
+  };
+
+  const addComponent = (stage: string, componentType: string) => {
+    const newNode: Node = {
+      id: `${componentType}-${Date.now()}`,
+      position: { x: Math.random() * 400, y: 200 + Math.random() * 200 },
+      data: { 
+        label: componentType,
+        stage,
+        type: componentType
+      },
+      style: { 
+        background: stage === 'intro' ? '#c8e6c9' : 
+                   stage === 'contents' ? '#bbdefb' : '#f8bbd9',
+        border: '1px solid #666'
+      }
+    };
+    setNodes((nds) => [...nds, newNode]);
+  };
+
+  return (
+    <div className="h-screen flex">
+      {/* Component Palette */}
+      <div className="w-80 bg-gray-50 p-4 overflow-y-auto">
+        <h3 className="text-lg font-bold mb-4">Component Library</h3>
+        
+        <div className="mb-6">
+          <h4 className="font-semibold mb-2 text-green-700">Intro Components</h4>
+          <div className="space-y-2">
+            <button
+              onClick={() => addComponent('intro', 'GitHub Auth')}
+              className="w-full p-2 bg-green-100 hover:bg-green-200 rounded text-sm"
+            >
+              🔐 GitHub Authentication
+            </button>
+            <button
+              onClick={() => addComponent('intro', 'Landing Page')}
+              className="w-full p-2 bg-green-100 hover:bg-green-200 rounded text-sm"
+            >
+              🏠 Landing Page Scanner
+            </button>
+            <button
+              onClick={() => addComponent('intro', 'UI Components')}
+              className="w-full p-2 bg-green-100 hover:bg-green-200 rounded text-sm"
+            >
+              🎨 UI Component Library
+            </button>
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <h4 className="font-semibold mb-2 text-blue-700">Content Components</h4>
+          <div className="space-y-2">
+            <button
+              onClick={() => addComponent('contents', 'Prompt Editor')}
+              className="w-full p-2 bg-blue-100 hover:bg-blue-200 rounded text-sm"
+            >
+              ✏️ Prompt Editor
+            </button>
+            <button
+              onClick={() => addComponent('contents', 'AI Model')}
+              className="w-full p-2 bg-blue-100 hover:bg-blue-200 rounded text-sm"
+            >
+              🤖 AI Model Comparison
+            </button>
+            <button
+              onClick={() => addComponent('contents', 'Knowledge Base')}
+              className="w-full p-2 bg-blue-100 hover:bg-blue-200 rounded text-sm"
+            >
+              📚 Knowledge Base
+            </button>
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <h4 className="font-semibold mb-2 text-pink-700">Deploy Components</h4>
+          <div className="space-y-2">
+            <button
+              onClick={() => addComponent('deploy', 'Database Setup')}
+              className="w-full p-2 bg-pink-100 hover:bg-pink-200 rounded text-sm"
+            >
+              🗄️ Database Configuration
+            </button>
+            <button
+              onClick={() => addComponent('deploy', 'GitHub Actions')}
+              className="w-full p-2 bg-pink-100 hover:bg-pink-200 rounded text-sm"
+            >
+              ⚙️ GitHub Actions CI/CD
+            </button>
+            <button
+              onClick={() => addComponent('deploy', 'Cloud Deploy')}
+              className="w-full p-2 bg-pink-100 hover:bg-pink-200 rounded text-sm"
+            >
+              ☁️ Cloud Deployment
+            </button>
+          </div>
+        </div>
+
+        <div className="border-t pt-4">
+          <div className="space-y-2">
+            <button
+              onClick={saveWorkflow}
+              className="w-full p-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 font-medium"
+            >
+              💾 Save Workflow
+            </button>
+            <button
+              onClick={executeWorkflow}
+              className="w-full p-3 bg-green-600 text-white rounded hover:bg-green-700 font-medium"
+            >
+              ▶️ Execute Workflow
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Workflow Canvas */}
+      <div className="flex-1">
+        <div className="h-full">
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onNodesChange={onNodesChange}
+            onEdgesChange={onEdgesChange}
+            onConnect={onConnect}
+            fitView
+            className="bg-gray-100"
+          >
+            <Background />
+            <Controls />
+            <MiniMap 
+              nodeColor={(node) => {
+                if (node.data.stage === 'intro') return '#4caf50';
+                if (node.data.stage === 'contents') return '#2196f3';
+                return '#e91e63';
+              }}
+            />
+          </ReactFlow>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+## **프롬프트 에디터 구현**
+
+**apps/web/app/editor/page.tsx:**
+```typescript
+'use client';
+import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const MonacoEditor = dynamic(() => import('@monaco-editor/react'), { ssr: false });
+
+export default function PromptEditor() {
+  const [prompt, setPrompt] = useState(`# AI Assistant Prompt Template
+
+You are a helpful AI assistant specialized in {{domain}}.
+
+## Context:
+{{context}}
+
+## Instructions:
+1. Analyze the user's request carefully
+2. Provide accurate and helpful information
+3. Use {{tone}} tone in your response
+4. Include relevant examples when appropriate
+
+## Constraints:
+- Keep responses under {{max_words}} words
+- Focus on practical solutions
+- Avoid {{restrictions}}
+
+User Query: {{user_input}}`);
+
+  const [testResult, setTestResult] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedModel, setSelectedModel] = useState('gpt-4');
+
+  const testPrompt = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('http://localhost:4000/ai/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          prompt: prompt.replace(/\{\{.*?\}\}/g, '[VARIABLE]'),
+          model: selectedModel
+        })
+      });
+      const data = await response.json();
+      setTestResult(data.output);
+    } catch (error) {
+      setTestResult(`Error: ${error}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const savePrompt = () => {
+    localStorage.setItem('ai-vibe-prompt', prompt);
+    alert('Prompt saved locally!');
+  };
+
+  return (
+    <div className="h-screen flex flex-col">
+      {/* Header */}
+      <div className="bg-white border-b p-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold">Prompt Editor</h1>
+        <div className="flex gap-4 items-center">
+          <select
+            value={selectedModel}
+            onChange={(e) => setSelectedModel(e.target.value)}
+            className="px-3 py-2 border rounded"
+          >
+            <option value="gpt-4">GPT-4</option>
+            <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+            <option value="claude-3">Claude 3</option>
+            <option value="gemini-pro">Gemini Pro</option>
+          </select>
+          <button
+            onClick={testPrompt}
+            disabled={isLoading}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+          >
+            {isLoading ? 'Testing...' : '🧪 Test'}
+          </button>
+          <button
+            onClick={savePrompt}
+            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          >
+            💾 Save
+          </button>
+        </div>
+      </div>
+
+      {/* Editor Area */}
+      <div className="flex-1 flex">
+        {/* Prompt Editor */}
+        <div className="w-1/2 flex flex-col">
+          <div className="bg-gray-100 p-2 text-sm font-medium border-b">
+            Prompt Template
+          </div>
+          <div className="flex-1">
+            <MonacoEditor
+              height="100%"
+              defaultLanguage="markdown"
+              value={prompt}
+              onChange={(value) => setPrompt(value || '')}
+              options={{
+                minimap: { enabled: false },
+                fontSize: 14,
+                lineNumbers: 'on',
+                wordWrap: 'on',
+                automaticLayout: true,
+                theme: 'vs-dark'
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Test Results */}
+        <div className="w-1/2 flex flex-col border-l">
+          <div className="bg-gray-100 p-2 text-sm font-medium border-b">
+            Test Results ({selectedModel})
+          </div>
+          <div className="flex-1 p-4 overflow-auto bg-gray-50">
+            {testResult ? (
+              <pre className="whitespace-pre-wrap text-sm">{testResult}</pre>
+            ) : (
+              <div className="text-gray-500 italic">
+                Click "Test" to see AI model response...
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+## **GitHub 통합 서비스**
+
+**apps/api/src/services/github.service.ts:**
+```typescript
+import { Octokit } from '@octokit/rest';
+
+export class GitHubService {
+  private octokit: Octokit;
+
+  constructor(accessToken: string) {
+    this.octokit = new Octokit({ auth: accessToken });
+  }
+
+  async scanRepository(owner: string, repo: string) {
+    try {
+      // 저장소 기본 정보 조회
+      const { data: repository } = await this.octokit.repos.get({ owner, repo });
+      
+      // 인증 관련 파일 스캔
+      const authComponents = await this.scanForAuthComponents(owner, repo);
+      
+      // UI 컴포넌트 스캔
+      const uiComponents = await this.scanForUIComponents(owner, repo);
+      
+      // 설정 파일 스캔
+      const configurations = await this.scanForConfigurations(owner, repo);
+
+      return {
+        repository: {
+          name: repository.name,
+          fullName: repository.full_name,
+          description: repository.description,
+          language: repository.language,
+          createdAt: repository.created_at
+        },
+        components: {
+          auth: authComponents,
+          ui: uiComponents
+        },
+        configurations
+      };
+    } catch (error) {
+      throw new Error(`Failed to scan repository: ${error}`);
+    }
+  }
+
+  private async scanForAuthComponents(owner: string, repo: string) {
+    const authFiles = [];
+    const searchTerms = ['auth', 'login', 'oauth', 'jwt', 'session'];
+    
+    for (const term of searchTerms) {
+      try {
+        const { data } = await this.octokit.search.code({
+          q: `${term} repo:${owner}/${repo} extension:tsx extension:ts extension:jsx extension:js`,
+          per_page: 5
+        });
+        
+        authFiles.push(...data.items.map(item => ({
+          name: item.name,
+          path: item.path,
+          type: this.determineAuthType(item.name, item.path),
+          url: item.html_url
+        })));
+      } catch (error) {
+        console.warn(`Search failed for term ${term}:`, error);
+      }
+    }
+    
+    return this.deduplicateFiles(authFiles);
+  }
+
+  private async scanForUIComponents(owner: string, repo: string) {
+    try {
+      // src/components 디렉토리 스캔
+      const { data: contents } = await this.octokit.repos.getContent({
+        owner,
+        repo,
+        path: 'src/components'
+      });
+
+      if (Array.isArray(contents)) {
+        const componentFiles = contents
+          .filter(file => 
+            file.type === 'file' && 
+            (file.name.endsWith('.tsx') || file.name.endsWith('.jsx'))
+          )
+          .map(file => ({
+            name: file.name.replace(/\.(tsx|jsx)$/, ''),
+            path: file.path,
+            type: 'ui-component',
+            downloadUrl: file.download_url
+          }));
+
+        return componentFiles;
+      }
+    } catch (error) {
+      console.warn('No components directory found:', error);
+    }
+    
+    return [];
+  }
+
+  private async scanForConfigurations(owner: string, repo: string) {
+    const configFiles = [
+      '.env.example',
+      'package.json',
+      'next.config.js',
+      'vite.config.ts',
+      'tailwind.config.js'
+    ];
+
+    const configurations = [];
+
+    for (const filename of configFiles) {
+      try {
+        const { data } = await this.octokit.repos.getContent({
+          owner,
+          repo,
+          path: filename
+        });
+
+        if ('content' in data) {
+          configurations.push({
+            filename,
+            content: Buffer.from(data.content, 'base64').toString(),
+            type: this.determineConfigType(filename)
+          });
+        }
+      } catch (error) {
+        // 파일이 없는 경우 무시
+      }
+    }
+
+    return configurations;
+  }
+
+  private determineAuthType(name: string, path: string): string {
+    const content = (name + path).toLowerCase();
+    
+    if (content.includes('oauth')) return 'oauth';
+    if (content.includes('jwt')) return 'jwt';
+    if (content.includes('session')) return 'session';
+    if (content.includes('login')) return 'login';
+    
+    return 'authentication';
+  }
+
+  private determineConfigType(filename: string): string {
+    if (filename.includes('env')) return 'environment';
+    if (filename.includes('package')) return 'dependencies';
+    if (filename.includes('next') || filename.includes('vite')) return 'build';
+    if (filename.includes('tailwind')) return 'styling';
+    
+    return 'configuration';
+  }
+
+  private deduplicateFiles(files: any[]) {
+    const seen = new Set();
+    return files.filter(file => {
+      const key = file.path;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  async createDeploymentWorkflow(owner: string, repo: string, config: any) {
+    const workflowContent = this.generateWorkflowYAML(config);
+    
+    try {
+      await this.octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: '.github/workflows/ai-vibe-deploy.yml',
+        message: 'Add AI Vibe auto-deployment workflow',
+        content: Buffer.from(workflowContent).toString('base64')
+      });
+
+      return { 
+        success: true, 
+        path: '.github/workflows/ai-vibe-deploy.yml',
+        url: `https://github.com/${owner}/${repo}/blob/main/.github/workflows/ai-vibe-deploy.yml`
+      };
+    } catch (error) {
+      throw new Error(`Failed to create workflow: ${error}`);
+    }
+  }
+
+  private generateWorkflowYAML(config: any): string {
+    return `
+name: AI Vibe Auto Deploy
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm test --if-present
+    
+    - name: Build application
+      run: npm run build
+      env:
+        NODE_ENV: production
+        ${Object.entries(config.env || {})
+          .map(([key, value]) => `${key}: \${{ secrets.${key} }}`)
+          .join('\n        ')}
+    
+    - name: Deploy to ${config.platform || 'Vercel'}
+      run: |
+        ${this.generateDeploymentCommands(config)}
+    `.trim();
+  }
+
+  private generateDeploymentCommands(config: any): string {
+    switch (config.platform) {
+      case 'vercel':
+        return 'npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}';
+      case 'netlify':
+        return 'npx netlify deploy --prod --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}';
+      case 'github-pages':
+        return 'npm run deploy';
+      default:
+        return 'echo "Custom deployment commands here"';
+    }
+  }
+}
+```
+
+## **Docker 설정**
+
+**docker-compose.yml:**
+```yaml
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:4000
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/ai_vibe
+      - NODE_ENV=development
+    volumes:
+      - ./apps/api:/app
+      - /app/node_modules
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=ai_vibe
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+```
+
+## **단계별 개발 로드맵**
+
+### **MVP 단계 (8주)**
+
+**Week 1-2: 기반 시스템**
+- 프로젝트 구조 설정 및 데이터베이스 스키마 구현
+- 기본 인증 시스템 (이메일 기반)
+- Profile CRUD API 및 UI 구현
+
+**Week 3-4: 워크플로우 빌더**
+- React Flow 기반 시각적 캔버스 구현
+- 3단계 워크플로우 구조 (Intro → Contents → Etc)
+- 드래그 앤 드롭 컴포넌트 추가 기능
+
+**Week 5-6: GitHub 통합**
+- GitHub OAuth 연동
+- 저장소 스캔 및 컴포넌트 추출 기능
+- 기존 코드 재사용 시스템
+
+**Week 7-8: AI 통합 및 배포**
+- 기본 프롬프트 에디터 구현
+- OpenAI API 연동 (단일 모델)
+- GitHub Actions 워크플로우 자동 생성
+
+### **Phase 1 (추가 6주)**
+- 멀티 AI 모델 비교 시스템
+- 고급 프롬프트 에디터 (자동 완성, 문법 검사)
+- Supabase 자동 설정 및 데이터베이스 마이그레이션
+- 실시간 모니터링 대시보드
+
+### **Phase 2 (추가 8주)**
+- 컴포넌트 마켓플레이스
+- 팀 협업 기능
+- 고급 분석 및 리포팅
+- 엔터프라이즈 기능 (RBAC, 감사 로그)
+
+## **시작 방법**
+
+```bash
+# 1. 프로젝트 클론 및 설정
+git clone <repository-url>
+cd ai-vibe-workflow
+
+# 2. 의존성 설치
+pnpm install
+
+# 3. 환경 변수 설정
+cp .env.example .env
+# .env 파일에서 필요한 값들 설정
+
+# 4. 데이터베이스 설정
+pnpm db:push
+
+# 5. 개발 서버 실행
+pnpm dev
+
+# 또는 Docker로 실행
+docker-compose up -d
+```
+
+**접속 URL:**
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:4000
+- Database Studio: http://localhost:5555 (pnpm db:studio)
+
+이 가이드를 통해 Cursor에서 AI 바이브 코딩 워크플로우 자동화 플랫폼을 단계적으로 구축할 수 있습니다. 각 컴포넌트는 독립적으로 개발하고 테스트할 수 있도록 모듈화되어 있으며, MVP부터 시작하여 점진적으로 고도화할 수 있습니다.
+---

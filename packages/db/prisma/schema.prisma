@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  plan      String   @default("free")
+  createdAt DateTime @default(now()) @map("created_at")
+  
+  users     User[]
+  projects  Project[]
+  profiles  Profile[]
+
+  @@map("organizations")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  role        String   @default("developer")
+  orgId       String   @map("org_id")
+  preferences Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  profiles     Profile[]
+
+  @@map("users")
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  orgId       String    @map("org_id")
+  name        String
+  description String?
+  status      String    @default("draft")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  
+  organization Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  workflows    Workflow[]
+
+  @@map("projects")
+}
+
+model Workflow {
+  id          String    @id @default(cuid())
+  projectId   String    @map("project_id")
+  definition  Json      // React Flow JSON structure
+  version     Int       @default(1)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  executions  WorkflowExecution[]
+
+  @@map("workflows")
+}
+
+model WorkflowExecution {
+  id          String    @id @default(cuid())
+  workflowId  String    @map("workflow_id")
+  status      String    @default("pending")
+  logs        Json?
+  metrics     Json?
+  startedAt   DateTime  @default(now()) @map("started_at")
+  completedAt DateTime? @map("completed_at")
+  
+  workflow    Workflow  @relation(fields: [workflowId], references: [id], onDelete: Cascade)
+
+  @@map("workflow_executions")
+}
+
+model Profile {
+  id            String   @id @default(cuid())
+  orgId         String   @map("org_id")
+  userId        String?  @map("user_id")
+  name          String
+  type          String   // github | database | ai | cloud | ui
+  configuration Json     // Encrypted sensitive data
+  version       Int      @default(1)
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  
+  organization  Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  user          User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@map("profiles")
+}
+
+model Component {
+  id         String   @id @default(cuid())
+  name       String
+  category   String   // intro | contents | deploy
+  definition Json
+  metadata   Json?
+  isPublic   Boolean  @default(false) @map("is_public")
+  createdAt  DateTime @default(now()) @map("created_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("components")
+}
+
+model Integration {
+  id            String   @id @default(cuid())
+  serviceType   String   @map("service_type") // github | supabase | openai | gcp
+  configuration Json
+  status        String   @default("active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("integrations")
+}
+

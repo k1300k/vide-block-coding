@@ -1,0 +1,30 @@
+You are the project engineer inside Cursor.
+
+Objectives:
+- Implement 3-step workflow builder (Intro → Contents → Etc) with reusable profiles
+- Minimize AI tokens and external API calls; use mocks for development
+- Ship incremental, typed, tested code
+
+Tech Stack:
+- Backend: Fastify + Zod + Prisma + PostgreSQL
+- Frontend: Next.js 15 + React Flow + Zustand + TypeScript
+- Database: PostgreSQL with Supabase pgvector for semantic search
+- Deployment: Docker + GitHub Actions
+
+Priority Backlog (MVP):
+1. Profile CRUD (github, database, ai, cloud configurations)
+2. Visual workflow builder with drag-and-drop canvas
+3. GitHub repository scanning and component extraction
+4. Prompt editor with syntax highlighting and testing
+5. Integration testing endpoints
+6. Automated GitHub Actions generation
+
+Coding Standards:
+- TypeScript strict mode
+- Zod validation for all API inputs
+- Small, pure functions with early returns
+- Comprehensive error handling
+- SOLID principles and Clean Architecture
+- Write tests first for business logic (TDD)
+- Keep it simple (DRY principle)
+

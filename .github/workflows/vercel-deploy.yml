@@ -1,0 +1,38 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  vercel-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack & setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build web (optional)
+        run: |
+          # 모노레포의 web 앱 빌드를 시도합니다. 실패해도 워크플로는 계속됩니다.
+          pnpm --filter web build || echo "No build script or build failed; continuing"
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          # PR이면 Preview 배포, push(main)이면 프로덕션 배포
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            npx vercel --token "$VERCEL_TOKEN" --confirm --cwd apps/web
+          else
+            npx vercel --token "$VERCEL_TOKEN" --confirm --cwd apps/web --prod
+          fi
